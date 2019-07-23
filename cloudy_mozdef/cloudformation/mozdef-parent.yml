@@ -19,11 +19,15 @@ Metadata:
       Parameters:
         - ACMCertArn
     - Label:
-        default: OIDC Configuration
+        default: Authentication
       Parameters:
-        - OIDCDiscoveryURL
+        - OIDCAuthorizationEndpoint
         - OIDCClientId
         - OIDCClientSecret
+        - OIDCIssuer
+        - OIDCTokenEndpoint
+        - OIDCUserInfoEndpoint
+        - ALBBasicAuthSecret
     ParameterLabels:
       VpcId:
         default: VPC ID
@@ -39,12 +43,20 @@ Metadata:
         default: FQDN to host MozDef at
       ACMCertArn:
         default: ACM Certificate ARN
-      OIDCDiscoveryURL:
-        default: OIDC Discovery URL
+      OIDCAuthorizationEndpoint:
+        default: OIDC authorization endpoint.
       OIDCClientId:
-        default: OIDC Client ID
+        default: OIDC Client ID.
       OIDCClientSecret:
-        default: OIDC Client Secret
+        default: OIDC Client Secret.
+      OIDCIssuer:
+        default: OIDC issuer.
+      OIDCTokenEndpoint:
+        default: OIDC oauth token endpoint.
+      OIDCUserInfoEndpoint:
+        default: OIDC user info endpoint.
+      ALBBasicAuthSecret:
+        default: Default basic authentication password, if enabled.
 Parameters:
   VpcId:
     Type: AWS::EC2::VPC::Id
@@ -66,23 +78,97 @@ Parameters:
     Description: The CIDR of IP addresses from which to allow inbound SSH connections
   DomainName:
     Type: String
-    Description: The fully qualified DNS name you will host CloudyMozDef at.
-    Default: cloudymozdef.security.allizom.org
+    Description: The fully qualified DNS name you will host MozDef at if you want to use a custom domain. Optional.
+    Default: ''
   ACMCertArn:
     Type: String
-    Description: "The ARN of your pre-issued ACM cert. (Example: arn:aws:acm:us-west-2:123456789012:certificate/abcdef01-2345-6789-abcd-ef0123456789)"
-  OIDCDiscoveryURL:
+    Default: ''
+    Description: "The ARN of your pre-issued ACM cert. Required if OIDC is being used. (Example: arn:aws:acm:us-west-2:123456789012:certificate/abcdef01-2345-6789-abcd-ef0123456789)"
+  OIDCAuthorizationEndpoint:
     Type: String
-    AllowedPattern: '^https?:\/\/.*'
+    Default: ''
     ConstraintDescription: A valid URL
-    Description: "The URL of your OIDC provider's well-known discovery URL (Example: https://auth.example.com/.well-known/openid-configuration)"
+    Description: "The url of the authorization endpoint found for your oidc provider generall found on (Example: https://auth.example.com/.well-known/openid-configuration)"
   OIDCClientId:
     Type: String
+    Default: ''
     Description: The client ID that your OIDC provider issues you for your Mozdef instance.
   OIDCClientSecret:
     Type: String
+    Default: ''
     Description: The secret that your OIDC provider issues you for your Mozdef instance.
     NoEcho: true
+  OIDCIssuer:
+    Type: String
+    Default: ''
+    Description: Generally can be found at the .well-known endpoint for your provider.
+  OIDCTokenEndpoint:
+    Type: String
+    Default: ''
+    Description: Generally can be found at the .well-known endpoint for your provider.
+  OIDCUserInfoEndpoint:
+    Type: String
+    Default: ''
+    Description: Generally can be found at the .well-known endpoint for your provider.
+  ALBBasicAuthSecret:
+    Type: String
+    Default: ''
+    Description: The secret that you use to authenticate to the MozDef instance using HTTP Basic Authentication.
+    NoEcho: true
+Rules:
+  ALBBasicAuthOnly:
+    RuleCondition: !Not [ !Equals [ !Ref 'ALBBasicAuthSecret', '' ] ]
+    Assertions:
+    - Assert:
+        !EachMemberEquals
+        - - !Ref 'OIDCAuthorizationEndpoint'
+          - !Ref 'OIDCClientId'
+          - !Ref 'OIDCClientSecret'
+          - !Ref 'OIDCIssuer'
+          - !Ref 'OIDCTokenEndpoint'
+          - !Ref 'OIDCUserInfoEndpoint'
+        - ''
+      AssertDescription: >
+        If you set an ALBBasicAuthSecret indicating you wish to use HTTP Basic
+        Auth for authentication, you must leave all OIDC attributes blank
+  OIDCHasAllRequiredParameters:
+    RuleCondition:
+      !Or
+      - !Not [ !Equals [ !Ref 'OIDCAuthorizationEndpoint', '' ] ]
+      - !Not [ !Equals [ !Ref 'OIDCClientId', '' ] ]
+      - !Not [ !Equals [ !Ref 'OIDCClientSecret', '' ] ]
+      - !Not [ !Equals [ !Ref 'OIDCIssuer', '' ] ]
+      - !Not [ !Equals [ !Ref 'OIDCTokenEndpoint', '' ] ]
+      - !Not [ !Equals [ !Ref 'OIDCUserInfoEndpoint', '' ] ]
+    Assertions:
+    - Assert:
+        !And
+        - !Not [ !Equals [ !Ref 'OIDCAuthorizationEndpoint', '' ] ]
+        - !Not [ !Equals [ !Ref 'OIDCClientId', '' ] ]
+        - !Not [ !Equals [ !Ref 'OIDCClientSecret', '' ] ]
+        - !Not [ !Equals [ !Ref 'OIDCIssuer', '' ] ]
+        - !Not [ !Equals [ !Ref 'OIDCTokenEndpoint', '' ] ]
+        - !Not [ !Equals [ !Ref 'OIDCUserInfoEndpoint', '' ] ]
+        - !Not [ !Equals [ !Ref 'ACMCertArn', '' ] ]
+      AssertDescription: >
+        If you set any OIDC parameter indicating you wish to use OIDC for
+        authentication, you must set all six OIDC parameters, [
+        OIDCAuthorizationEndpoint, OIDCClientId, OIDCClientSecret, OIDCIssuer,
+        OIDCTokenEndpoint, OIDCUserInfoEndpoint] as well as an ACM Certificate
+        in the ACMCertArn parameter
+  SomeAuthHasBeenConfigured:
+    Assertions:
+    - Assert:
+        !Or
+        - !Not [ !Equals [ !Ref 'OIDCClientId', '' ] ]
+        - !Not [ !Equals [ !Ref 'ALBBasicAuthSecret', '' ] ]
+      AssertDescription: >
+        You must choose either to use HTTP Basic Auth or OIDC for authentication.
+        To choose HTTP Basic Auth you must set an ALBBasicAuthSecret. To choose
+        OIDC you must set all six OIDC parameters, [OIDCAuthorizationEndpoint,
+        OIDCClientId, OIDCClientSecret, OIDCIssuer, OIDCTokenEndpoint,
+        OIDCUserInfoEndpoint] as well as an ACM Certificate in the ACMCertArn
+        parameter.
 # A RegionMap of AMI IDs is required by AWS Marketplace  https://docs.aws.amazon.com/marketplace/latest/userguide/cloudformation.html#aws-cloudformation-template-preparation
 # INSERT MAPPING HERE : This template does not work in this state. The mapping is replaced with a working AWS region to AMI ID mapping as well as a variable map with the S3TemplateLocationPrefix by cloudy_mozdef/ci/publish_versioned_templates. The resulting functioning CloudFormation template is uploaded to S3 for the version being built.
 Resources:
@@ -103,6 +189,7 @@ Resources:
         CloudTrailS3BucketName: !GetAtt MozDefCloudTrail.Outputs.CloudTrailS3BucketName
         CloudTrailSQSQueueArn: !GetAtt MozDefCloudTrail.Outputs.CloudTrailSQSQueueArn
         MozDefSQSQueueArn: !GetAtt MozDefSQS.Outputs.SQSQueueArn
+        MozDefAlertSqsQueueArn: !GetAtt MozDefSQS.Outputs.AlertTaskSQSQueueArn
         # CloudTrailS3BucketIAMRoleArn we leave empty as we will consume CloudTrail logs from our own account
         ESServiceLinkedRoleExists: !GetAtt ESServiceLinkedRoleExists.RoleExists
       Tags:
@@ -122,16 +209,21 @@ Resources:
         EFSID: !GetAtt MozDefEFS.Outputs.EFSID
         MozDefSecurityGroupId: !GetAtt MozDefSecurityGroups.Outputs.MozDefSecurityGroupId
         MozDefLoadBalancerSecurityGroupId: !GetAtt MozDefSecurityGroups.Outputs.MozDefLoadBalancerSecurityGroupId
-        MozDefACMCertArn: !Ref ACMCertArn
+        ACMCertArn: !Ref ACMCertArn
         ESURL: !GetAtt MozDefES.Outputs.ElasticsearchURL
         KibanaURL: !GetAtt MozDefES.Outputs.ElasticsearchKibanaURL
         KibanaDomainOnlyURL: !GetAtt MozDefES.Outputs.ElasticsearchDomainOnlyURL
         OIDCClientId: !Ref OIDCClientId
         OIDCClientSecret: !Ref OIDCClientSecret
-        OIDCDiscoveryURL: !Ref OIDCDiscoveryURL
+        OIDCAuthorizationEndpoint: !Ref OIDCAuthorizationEndpoint
+        OIDCIssuer: !Ref OIDCIssuer
+        OIDCTokenEndpoint: !Ref OIDCTokenEndpoint
+        OIDCUserInfoEndpoint: !Ref OIDCUserInfoEndpoint
+        ALBBasicAuthSecret: !Ref ALBBasicAuthSecret
         CloudTrailSQSNotificationQueueName: !GetAtt MozDefCloudTrail.Outputs.CloudTrailSQSQueueName
         MozDefSQSQueueName: !GetAtt MozDefSQS.Outputs.SQSQueueName
         DomainName: !Ref DomainName
+        AlertQueueUrl: !GetAtt MozDefSQS.Outputs.AlertTaskSQSQueueUrl
       Tags:
         - Key: application
           Value: mozdef
@@ -186,6 +278,19 @@ Resources:
       - Key: stack
         Value: !Ref AWS::StackName
       TemplateURL: !Join [ '', [ !FindInMap [ VariableMap, Variables, S3TemplateLocation ], mozdef-cloudtrail.yml ] ]
+  MozDefVPCFlowLogs:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      Parameters:
+        VpcId: !Ref VpcId
+        MozDefSQSQueueArn: !GetAtt MozDefSQS.Outputs.SQSQueueArn
+        MozDefSQSQueueUrl: !GetAtt MozDefSQS.Outputs.SQSQueueUrl
+      Tags:
+      - Key: application
+        Value: mozdef
+      - Key: stack
+        Value: !Ref AWS::StackName
+      TemplateURL: !Join [ '', [ !FindInMap [ VariableMap, Variables, S3TemplateLocation ], mozdef-vpc-flow-logs.yml ] ]
   CloudFormationLambdaIAMRole:
     Type: AWS::IAM::Role
     Properties:
@@ -219,6 +324,7 @@ Resources:
     # occurs on stack creation for this Lambda Function resource. The DependsOn
     # prevents the error.
     Properties:
+      Description: Function used within CloudFormation to get the length of an array
       Code:
         ZipFile: |
           import cfnresponse
@@ -250,6 +356,7 @@ Resources:
     # occurs on stack creation for this Lambda Function resource. The DependsOn
     # prevents the error.
     Properties:
+      Description: Function used within CloudFormation to check if an IAM role exists
       Code:
         ZipFile: |
           import cfnresponse
@@ -280,3 +387,7 @@ Resources:
       RoleName: AWSServiceRoleForAmazonElasticsearchService
       PathPrefix: '/aws-service-role/es.amazonaws.com/'
       ServiceToken: !GetAtt DoesRoleExistLambdaFunction.Arn
+Outputs:
+  LoadBalancerDNSName:
+    Description: The DNS name of the ALB hosting MozDef.  If using OIDC or SSL point your DNS at this.  If using basic auth no DNS is necessary.
+    Value: !GetAtt MozDefInstance.Outputs.LoadBalancerDNSName
