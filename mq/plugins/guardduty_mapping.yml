@@ -1,0 +1,20 @@
+---
+  Recon:EC2/PortProbeUnprotectedPort:
+    details.findingid: details.id
+    details.arn: details.arn
+    details.awsaccountid: details.accountid
+    details.awsregion: details.region
+    details.resourcetype: details.resource.resourcetype
+    details.instance.id: details.resource.instancedetails.instanceid
+    details.instance.instancetype: details.resource.instancedetails.instancetype
+    details.instance.launchtime: details.resource.instancedetails.launchtime
+    details.instance.iaminstanceprofile: details.resource.instancedetails.iaminstanceprofile
+    details.instance.net: details.resource.instancedetails.networkinterfaces
+    details.instance.tags: details.resource.instancedetails.tags
+    details.instance.stage: details.resource.instancedetails.instancestate
+    details.instance.az: details.resource.instancedetails.availabilityzone
+    details.instance.imageid: details.resource.instancedetails.imageid
+    details.instance.imagedesc: details.resource.instancedetails.imagedescription
+    details.detectorid: details.finding.detectorid
+    details.finding: details.finding.action
+    
