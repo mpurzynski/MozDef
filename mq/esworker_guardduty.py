@@ -51,21 +51,15 @@ class GDtaskConsumer(taskConsumer):
 
 def esConnect():
     """open or re-open a connection to elastic search"""
-    return ElasticsearchClient(
-        (list("{0}".format(s) for s in options.esservers)), options.esbulksize
-    )
+    return ElasticsearchClient((list("{0}".format(s) for s in options.esservers)), options.esbulksize)
 
 
 def initConfig():
     # capture the hostname
-    options.mozdefhostname = getConfig(
-        "mozdefhostname", socket.gethostname(), options.configfile
-    )
+    options.mozdefhostname = getConfig("mozdefhostname", socket.gethostname(), options.configfile)
 
     # elastic search options. set esbulksize to a non-zero value to enable bulk posting, set timeout to post no matter how many events after X seconds.
-    options.esservers = list(
-        getConfig("esservers", "http://localhost:9200", options.configfile).split(",")
-    )
+    options.esservers = list(getConfig("esservers", "http://localhost:9200", options.configfile).split(","))
     options.esbulksize = getConfig("esbulksize", 0, options.configfile)
     options.esbulktimeout = getConfig("esbulktimeout", 30, options.configfile)
 
@@ -82,14 +76,8 @@ def initConfig():
     options.secretkey = getConfig("secretkey", "", options.configfile)
     options.region = getConfig("region", "", options.configfile)
 
-    # plugin options
-    # secs to pass before checking for new/updated plugins
-    # seems to cause memory leaks..
-    # regular updates are disabled for now,
-    # though we set the frequency anyway.
-    options.plugincheckfrequency = getConfig(
-        "plugincheckfrequency", 120, options.configfile
-    )
+    # How long to sleep between polling
+    options.sleep_time = getConfig("sleep_time", 0.1, options.configfile)
 
 
 def main():
@@ -116,10 +104,7 @@ if __name__ == "__main__":
     # configure ourselves
     parser = OptionParser()
     parser.add_option(
-        "-c",
-        dest="configfile",
-        default=sys.argv[0].replace(".py", ".conf"),
-        help="configuration file to use",
+        "-c", dest="configfile", default=sys.argv[0].replace(".py", ".conf"), help="configuration file to use"
     )
     (options, args) = parser.parse_args()
     initConfig()
