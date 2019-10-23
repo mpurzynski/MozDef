@@ -25,9 +25,7 @@ class message(object):
             self.mozdefhostname = "failed to fetch mozdefhostname"
             pass
 
-        with open(
-            os.path.join(os.path.dirname(__file__), "guardduty_mapping.yml"), "r"
-        ) as f:
+        with open(os.path.join(os.path.dirname(__file__), "guardduty_mapping.yml"), "r") as f:
             mapping_map = f.read()
 
         yap = yaml.safe_load(mapping_map)
@@ -60,9 +58,7 @@ class message(object):
         current_pointer = haystack
         for updated_key in num_levels:
             if updated_key == num_levels[-1]:
-                current_pointer[updated_key] = toUTC(
-                    current_pointer[updated_key]
-                ).isoformat()
+                current_pointer[updated_key] = toUTC(current_pointer[updated_key]).isoformat()
                 return haystack
             if updated_key in current_pointer:
                 current_pointer = current_pointer[updated_key]
@@ -76,12 +72,13 @@ class message(object):
         if not message["source"] == "guardduty":
             return (message, metadata)
 
-        print(message)
+        if "details" not in message:
+            return (message, metadata)
 
-        for ipaddress_key in self.ipaddress_keys:
-            if "sourceipaddress" not in message["details"]:
-                if key_exists(ipaddress_key, message):
-                    message.details.sourceipaddress = message.get(ipaddress_key)
+        # for ipaddress_key in self.ipaddress_keys:
+        #    if "sourceipaddress" not in message["details"]:
+        #        if key_exists(ipaddress_key, message):
+        #            message.details.sourceipaddress = message.get(ipaddress_key)
 
         # if we still haven't found what we are looking for #U2
         # sometimes it's in a list
@@ -103,42 +100,35 @@ class message(object):
         #                portprobedetails.remoteipdetails.ipaddressv4
         #            )
 
+        # XXX: use it later to re-format & rewrite additional fields
         # reformat the date fields to isoformat
-        for date_key in self.date_keys:
-            if key_exists(date_key, message):
-                if message.get(date_key) is None:
-                    continue
-                else:
-                    message = self.convert_key_date_format(date_key, message)
+        # for date_key in self.date_keys:
+        #    if key_exists(date_key, message):
+        #        if message.get(date_key) is None:
+        #            continue
+        #        else:
+        #            message = self.convert_key_date_format(date_key, message)
         newmessage = dict()
         newmessage["receivedtimestamp"] = message["receivedtimestamp"]
         newmessage["timestamp"] = message["timestamp"]
         newmessage["utctimestamp"] = message["utctimestamp"]
-        newmessage["processname"] = message["processname"]
-        newmessage["processid"] = message["processid"]
-        newmessage["severity"] = message["severity"]
+        newmessage["processname"] = "FIXME"
+        newmessage["processid"] = "FIXME"
+        newmessage["severity"] = "FIXME"
         newmessage["mozdefhostname"] = message["mozdefhostname"]
         newmessage["tags"] = ["aws", "guardduty"] + message["tags"]
         newmessage["category"] = "guardduty"
         newmessage["source"] = "guardduty"
         newmessage["customendpoint"] = ""
         newmessage["details"] = {}
-        newmessage["details"]["type"] = message["details"]["finding"]["action"][
-            "actiontype"
-        ].lower()
-        # import code
-        # code.interact(local=locals())
+        newmessage["details"]["type"] = message["details"]["finding"]["action"]["actiontype"].lower()
         newmessage["details"]["finding"] = message["category"]
         newmessage["summary"] = message["details"]["title"]
-        newmessage["details"]["resourcerole"] = message["details"]["finding"][
-            "resourcerole"
-        ].lower()
+        newmessage["details"]["resourcerole"] = message["details"]["finding"]["resourcerole"].lower()
 
         if message["category"] in self.eventtypes:
             for key in self.yap[newmessage["details"]["finding"]]:
-                mappedvalue = jmespath.search(
-                    self.yap[newmessage["details"]["finding"]][key], message
-                )
+                mappedvalue = jmespath.search(self.yap[newmessage["details"]["finding"]][key], message)
                 # JMESPath likes to silently return a None object
                 if mappedvalue is not None:
                     newmessage[key] = mappedvalue
