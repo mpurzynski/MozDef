@@ -31,7 +31,7 @@ class message(object):
         yap = yaml.safe_load(mapping_map)
         self.eventtypes = list(yap.keys())
         self.yap = yap
-        del (mapping_map)
+        del mapping_map
 
         # AWS guard duty sends dates as iso_8601 which ES doesn't appreciate
         # here's a list of date fields we'll convert to isoformat
@@ -121,16 +121,16 @@ class message(object):
         newmessage["source"] = "guardduty"
         newmessage["customendpoint"] = ""
         newmessage["details"] = {}
-        newmessage["details"]["type"] = message["details"]["finding"]["action"]["actiontype"].lower()
-        newmessage["details"]["finding"] = message["category"]
+        newmessage["details"]["type"] = message["details"]["finding"]["action"]["actionType"].lower()
+        newmessage["details"]["finding"] = message['details']["category"]
         newmessage["summary"] = message["details"]["title"]
-        newmessage["details"]["resourcerole"] = message["details"]["finding"]["resourcerole"].lower()
+        newmessage["details"]["resourcerole"] = message["details"]["finding"]["resourceRole"].lower()
 
-        if message["category"] in self.eventtypes:
+        if message["details"]["category"] in self.eventtypes:
             for key in self.yap[newmessage["details"]["finding"]]:
                 mappedvalue = jmespath.search(self.yap[newmessage["details"]["finding"]][key], message)
                 # JMESPath likes to silently return a None object
                 if mappedvalue is not None:
-                    newmessage[key] = mappedvalue
+                    newmessage["details"][key] = mappedvalue
 
         return (newmessage, metadata)
