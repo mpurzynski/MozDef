@@ -68,7 +68,7 @@
     destinationport: details.finding.action.networkConnectionAction.localPortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   UnauthorizedAccess:EC2/TorIPCaller:
     findingid: details.id
@@ -94,7 +94,7 @@
     destinationipaddress: details.finding.action.networkConnectionAction.localIpDetails.ipAddressV4
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   UnauthorizedAccess:EC2/TorClient:
     findingid: details.id
@@ -120,7 +120,7 @@
     destinationipaddress: details.finding.action.networkConnectionAction.remoteIpDetails.ipAddressV4
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Backdoor:EC2/DenialOfService.Tcp:
     findingid: details.id
@@ -145,7 +145,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Backdoor:EC2/DenialOfService.Udp:
     findingid: details.id
@@ -170,7 +170,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/DGADomainRequest.B:
     findingid: details.id
@@ -195,7 +195,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/BlackholeTraffic:
     findingid: details.id
@@ -220,7 +220,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/DropPoint:
     findingid: details.id
@@ -245,7 +245,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/BlackholeTraffic!DNS:
     findingid: details.id
@@ -270,7 +270,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/DriveBySourceTraffic!DNS:
     findingid: details.id
@@ -295,7 +295,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/DropPoint!DNS:
     findingid: details.id
@@ -320,7 +320,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/DGADomainRequest.B:
     findingid: details.id
@@ -345,7 +345,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/DGADomainRequest.C!DNS:
     findingid: details.id
@@ -370,7 +370,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
   
   Trojan:EC2/PhishingDomainRequest!DNS:
     findingid: details.id
@@ -395,7 +395,7 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
 
   CryptoCurrency:EC2/BitcoinTool.B!DNS:
     findingid: details.id
@@ -420,4 +420,4 @@
     destinationport: details.finding.action.networkConnectionAction.remotePortDetails.port
     proto: details.finding.action.networkConnectionAction.protocol
     evidence: details.finding.evidence
-    addinfo: details.finding.additionalInfo
+    miscinfo: details.finding.additionalInfo
