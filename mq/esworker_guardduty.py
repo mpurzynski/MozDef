@@ -41,9 +41,10 @@ except ImportError as e:
 
 
 class GDtaskConsumer(taskConsumer):
-    def on_message(self, message_raw):
+    def build_submit_message(self, message):
         # default elastic search metadata for an event
         metadata = {"index": "events", "id": None}
+
         event = {}
 
         event["receivedtimestamp"] = toUTC(datetime.now()).isoformat()
@@ -58,8 +59,27 @@ class GDtaskConsumer(taskConsumer):
         event["source"] = "guardduty"
         event["details"] = {}
 
+        event["details"] = message["details"]
+        if "hostname" in message:
+            event["hostname"] = message["hostname"]
+        if "summary" in message:
+            event["summary"] = message["summary"]
+        if "category" in message:
+            event["details"]["category"] = message["category"]
+        if "tags" in message:
+            event["details"]["tags"] = message["tags"]
+        event["utctimestamp"] = toUTC(message["timestamp"]).isoformat()
+        event["timestamp"] = event["utctimestamp"]
+        (event, metadata) = sendEventToPlugins(event, metadata, self.pluginList)
+        # Drop message if plugins set to None
+        if event is None:
+            return
+
+        self.save_event(event, metadata)
+
+    def on_message(self, message_raw):
         if "Message" in message_raw:
-            message = {}
+            event = {}
             message = json.loads(message_raw["Message"])
             if "details" in message:
                 if "finding" in message["details"]:
@@ -71,26 +91,16 @@ class GDtaskConsumer(taskConsumer):
                                         for probe in message["details"]["finding"]["action"]["portProbeAction"][
                                             "portProbeDetails"
                                         ]:
-                                            print("victim {0}".format(probe["localPortDetails"]))
-                                            print("actor {0}".format(probe["remoteIpDetails"]))
-            event["details"] = message["details"]
-            if "hostname" in message:
-                event["hostname"] = message["hostname"]
-            if "summary" in message:
-                event["summary"] = message["summary"]
-            if "category" in message:
-                event["details"]["category"] = message["category"]
-            if "tags" in message:
-                event["details"]["tags"] = message["tags"]
-            event["utctimestamp"] = toUTC(message["timestamp"]).isoformat()
-            event["timestamp"] = event["utctimestamp"]
-            print(event)
-            (event, metadata) = sendEventToPlugins(event, metadata, self.pluginList)
-            # Drop message if plugins set to None
-            if event is None:
-                return
-            # self.save_event(event, metadata)
-            print("I would save event now")
+                                            isolatedmessage = message
+                                            del isolatedmessage["details"]["finding"]["action"]["portProbeAction"][
+                                                "portProbeDetails"
+                                            ]
+                                            isolatedmessage["details"]["finding"]["action"]["portProbeAction"][
+                                                "portProbeDetails"
+                                            ] = probe
+                                            self.build_submit_message(message)
+                            else:
+                                self.build_submit_message(message)
 
 
 def esConnect():
