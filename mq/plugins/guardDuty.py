@@ -99,5 +99,32 @@ class message(object):
                 newmessage["hostname"] = newmessage["details"]["net"]["publicdnsname"]
             elif "privatednsname" in newmessage["details"]["net"]:
                 newmessage["hostname"] = newmessage["details"]["net"]["privatednsname"]
+        # Flip IP addresses in we are the source of attacks
+        if (
+            newmessage["details"]["finding"] == "UnauthorizedAccess:EC2/RDPBruteForce"
+            or newmessage["details"]["finding"] == "UnauthorizedAccess:EC2/SSHBruteForce"
+        ):
+            if newmessage["details"]["net"]["direction"] == "OUTBOUND":
+                # could be more optimized here but need to be careful
+                truedstip = "0.0.0.0"
+                truesrcip = "0.0.0.0"
+                if "destinationipaddress" in newmessage["details"]:
+                    truedstip = newmessage["details"]["sourceipaddress"]
+                if "sourceipaddress" in newmessage["details"]:
+                    truesrcip = newmessage["details"]["destinationipaddress"]
+                newmessage["details"]["destinationipaddress"] = truedstip
+                newmessage["details"]["sourceipaddress"] = truesrcip
+                del newmessage["details"]["sourceport"]
+                del newmessage["details"]["destinationport"]
+
+        # Last resort in case we don't have any local IP address yet
+        if newmessage["details"]["net"]["direction"] == "INBOUND":
+            if "destinationipaddress" not in newmessage["details"]:
+                if "publicip" in newmessage["details"]["net"]:
+                    newmessage["details"]["net"]["publicip"]
+        if newmessage["details"]["net"]["direction"] == "OUTBOUND":
+            if "sourceipaddress" not in newmessage["details"]:
+                if "publicip" in newmessage["details"]["net"]:
+                    newmessage["details"]["net"]["publicip"]
 
         return (newmessage, metadata)

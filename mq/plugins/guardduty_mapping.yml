@@ -52,6 +52,7 @@
     detectorid: details.finding.detectorId
     proto: details.finding.action.networkConnectionAction.protocol
     sourceipaddress: details.finding.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+    destinationipaddress: details.finding.action.networkConnectionAction.localIpDetails.ipAddressV4
     sourceport: details.finding.action.networkConnectionAction.remotePortDetails.port
     destinationport: details.finding.action.networkConnectionAction.localPortDetails.port
     net.direction: details.finding.action.networkConnectionAction.connectionDirection
