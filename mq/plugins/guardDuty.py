@@ -118,8 +118,14 @@ class message(object):
 
         # Last resort in case we don't have any local IP address yet
         # Fake it till you make it
-        if newmessage["details"]["finding"] == "Recon:EC2/PortProbeUnprotectedPort":
-            newmessage["details"]["direction"] = "INBOUND"
+        attdir = {
+            "Recon:EC2/PortProbeUnprotectedPort": "INBOUND",
+            "CryptoCurrency:EC2/BitcoinTool.B!DNS": "INBOUND",
+            "Trojan:EC2/DGADomainRequest.B": "INBOUND",
+        }
+        if "direction" not in newmessage["details"]:
+            newmessage["details"]["direction"] = attdir[newmessage["details"]["finding"]]
+            print(newmessage["details"]["direction"])
         if newmessage["details"]["direction"] == "INBOUND":
             if "destinationipaddress" not in newmessage["details"]:
                 if "publicip" in newmessage["details"]:
