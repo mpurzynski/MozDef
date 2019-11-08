@@ -94,17 +94,16 @@ class message(object):
                     newmessage["details"]["awstags"].append(v.lower())
             del newmessage["details"]["tags"]
         # Find something that remotely resembles an FQDN
-        if "net" in newmessage["details"]:
-            if "publicdnsname" in newmessage["details"]["net"]:
-                newmessage["hostname"] = newmessage["details"]["net"]["publicdnsname"]
-            elif "privatednsname" in newmessage["details"]["net"]:
-                newmessage["hostname"] = newmessage["details"]["net"]["privatednsname"]
+        if "publicdnsname" in newmessage["details"]:
+            newmessage["hostname"] = newmessage["details"]["publicdnsname"]
+        elif "privatednsname" in newmessage["details"]:
+            newmessage["hostname"] = newmessage["details"]["privatednsname"]
         # Flip IP addresses in we are the source of attacks
         if (
             newmessage["details"]["finding"] == "UnauthorizedAccess:EC2/RDPBruteForce"
             or newmessage["details"]["finding"] == "UnauthorizedAccess:EC2/SSHBruteForce"
         ):
-            if newmessage["details"]["net"]["direction"] == "OUTBOUND":
+            if newmessage["details"]["direction"] == "OUTBOUND":
                 # could be more optimized here but need to be careful
                 truedstip = "0.0.0.0"
                 truesrcip = "0.0.0.0"
@@ -118,13 +117,16 @@ class message(object):
                 del newmessage["details"]["destinationport"]
 
         # Last resort in case we don't have any local IP address yet
-        if newmessage["details"]["net"]["direction"] == "INBOUND":
+        # Fake it till you make it
+        if newmessage["details"]["finding"] == "Recon:EC2/PortProbeUnprotectedPort":
+            newmessage["details"]["direction"] = "INBOUND"
+        if newmessage["details"]["direction"] == "INBOUND":
             if "destinationipaddress" not in newmessage["details"]:
-                if "publicip" in newmessage["details"]["net"]:
-                    newmessage["details"]["net"]["publicip"]
-        if newmessage["details"]["net"]["direction"] == "OUTBOUND":
+                if "publicip" in newmessage["details"]:
+                    newmessage["details"]["destinationipaddress"] = newmessage["details"]["publicip"]
+        if newmessage["details"]["direction"] == "OUTBOUND":
             if "sourceipaddress" not in newmessage["details"]:
-                if "publicip" in newmessage["details"]["net"]:
-                    newmessage["details"]["net"]["publicip"]
+                if "publicip" in newmessage["details"]:
+                    newmessage["details"]["sourceipaddress"] = newmessage["details"]["publicip"]
 
         return (newmessage, metadata)

@@ -24,13 +24,14 @@
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
     platform: details.resource.instanceDetails.platform
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   UnauthorizedAccess:EC2/RDPBruteForce:
     findingid: details.id
@@ -55,20 +56,19 @@
     destinationipaddress: details.finding.action.networkConnectionAction.localIpDetails.ipAddressV4
     sourceport: details.finding.action.networkConnectionAction.remotePortDetails.port
     destinationport: details.finding.action.networkConnectionAction.localPortDetails.port
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
     platform: details.resource.instanceDetails.platform
     gdeventcreatedts: details.createdAt
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   UnauthorizedAccess:EC2/SSHBruteForce:
     findingid: details.id
@@ -97,14 +97,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
 
   Trojan:EC2/DNSDataExfiltration:
     findingid: details.id
@@ -136,14 +136,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   UnauthorizedAccess:EC2/TorIPCaller:
     findingid: details.id
@@ -175,14 +175,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
 
   UnauthorizedAccess:EC2/TorClient:
     findingid: details.id
@@ -214,14 +214,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   UnauthorizedAccess:EC2/TorRelay:
     findingid: details.id
@@ -253,14 +253,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   UnauthorizedAccess:EC2/MaliciousIPCaller.Custom:
     findingid: details.id
@@ -292,14 +292,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
 
   Backdoor:EC2/Spambot:
     findingid: details.id
@@ -331,14 +331,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Backdoor:EC2/C&CActivity.B!DNS:
     findingid: details.id
@@ -371,14 +371,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
 
   Backdoor:EC2/DenialOfService.Tcp:
     findingid: details.id
@@ -410,14 +410,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Backdoor:EC2/DenialOfService.Udp:
     findingid: details.id
@@ -449,14 +449,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Backdoor:EC2/DenialOfService.Dns:
     findingid: details.id
@@ -489,14 +489,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Backdoor:EC2/DenialOfService.UdpOnTcpPorts:
     findingid: details.id
@@ -528,14 +528,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Backdoor:EC2/DenialOfService.UnusualProtocol:
     findingid: details.id
@@ -567,14 +567,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Behavior:EC2/NetworkPortUnusual:
     findingid: details.id
@@ -606,14 +606,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Behavior:EC2/TrafficVolumeUnusual:
     findingid: details.id
@@ -645,14 +645,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Trojan:EC2/BlackholeTraffic:
     findingid: details.id
@@ -683,14 +683,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Trojan:EC2/DropPoint:
     findingid: details.id
@@ -721,14 +721,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Trojan:EC2/BlackholeTraffic!DNS:
     findingid: details.id
@@ -760,14 +760,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Trojan:EC2/DriveBySourceTraffic!DNS:
     findingid: details.id
@@ -799,14 +799,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Trojan:EC2/DropPoint!DNS:
     findingid: details.id
@@ -838,14 +838,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Trojan:EC2/DGADomainRequest.B:
     findingid: details.id
@@ -877,14 +877,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Trojan:EC2/DGADomainRequest.C!DNS:
     findingid: details.id
@@ -916,14 +916,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   Trojan:EC2/PhishingDomainRequest!DNS:
     findingid: details.id
@@ -955,14 +955,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
 
   CryptoCurrency:EC2/BitcoinTool.B!DNS:
     findingid: details.id
@@ -994,14 +994,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   CryptoCurrency:EC2/BitcoinTool.B:
     findingid: details.id
@@ -1032,14 +1032,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
 
   Recon:EC2/Portscan:
     findingid: details.id
@@ -1070,14 +1070,14 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
   
   UnauthorizedAccess:EC2/MetadataDNSRebind:
     findingid: details.id
@@ -1108,11 +1108,11 @@
     gdeventupdatedts: details.updatedAt
     gdeventfirstseents: details.finding.eventFirstSeen
     gdeventlastseents: details.finding.eventLastSeen
-    net.networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
-    net.privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
-    net.privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
-    net.subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
-    net.vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
-    net.publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
-    net.publicip: details.resource.instanceDetails.networkInterfaces.publicIp
-    net.direction: details.finding.action.networkConnectionAction.connectionDirection
+    networkinterfaceid: details.resource.instanceDetails.networkInterfaces.networkInterfaceId
+    privatednsname: details.resource.instanceDetails.networkInterfaces.privateDnsName
+    privateipaddress: details.resource.instanceDetails.networkInterfaces.privateIpAddress
+    subnetid: details.resource.instanceDetails.networkInterfaces.subnetId
+    vpcid: details.resource.instanceDetails.networkInterfaces.vpcId
+    publicdnsname: details.resource.instanceDetails.networkInterfaces.publicDnsName
+    publicip: details.resource.instanceDetails.networkInterfaces.publicIp
+    direction: details.finding.action.networkConnectionAction.connectionDirection
